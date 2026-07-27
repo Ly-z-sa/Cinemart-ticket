@@ -87,11 +87,11 @@ const EMBEDDED_FOOTER = `<footer id="site-footer">
     </div>
 
     <div class="footer-bottom">
-      <span>© 2026 NokorPass. All rights reserved. <small class="site-version">v1.9.0</small></span>
+      <span>© 2026 NokorPass. All rights reserved. <small class="site-version">v1.9.1</small></span>
       <span class="footer-bottom-links">
-        <a href="privacy.html">Privacy</a> ·
-        <a href="terms.html">Terms</a> ·
-        <a href="privacy.html#cookies-section">Cookies</a>
+        <a href="/privacy">Privacy</a> ·
+        <a href="/terms">Terms</a> ·
+        <a href="/privacy#cookies-section">Cookies</a>
       </span>
     </div>
   </footer>`;

@@ -19,7 +19,7 @@
   <div class="payment-container">
     
     <div id="paymentSelection">
-      <div class="payment-title">Checkout for <span>Movie</span></div>
+      <div class="payment-title">Checkout for <span id="checkoutTypeLabel">Movie</span></div>
       
       <div class="payment-methods">
         <div class="method-card" data-name="ABA Bank">
@@ -49,101 +49,13 @@
     </div>
 
     <div id="successView" class="success-view">
-      <h2 style="font-family: 'Syne', sans-serif; font-size: 2rem; color: #4ade80; margin-bottom: 30px;">Payment Successful!</h2>
+      <h2 style="font-family: 'Syne', sans-serif; font-size: 2rem; color: #4ade80; margin-bottom: 4px;">Payment Successful!</h2>
+      <p id="ticketCountSub" style="color: var(--muted); margin-bottom: 20px; font-size: 1rem;"></p>
       
-      <div id="ticketExport" class="ticket-outer">
-        <!-- Circular corner notches -->
-        <div class="notch notch-tl"></div>
-        <div class="notch notch-tr"></div>
-        <div class="notch notch-bl"></div>
-        <div class="notch notch-br"></div>
+      <div id="ticketsStack" class="tickets-stack"></div>
 
-        <!-- Left Part: Main Ticket -->
-        <div class="ticket-main">
-          <div class="ticket-main-header">
-            <span class="brand">
-              <svg class="brand-icon-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
-              NOKORPASS
-            </span>
-            <span class="serial" id="tOrderId">—</span>
-          </div>
-          <div class="ticket-main-body">
-            <!-- Background watermark line art SVG -->
-            <svg class="ticket-watermark" viewBox="0 0 100 100" fill="none" stroke="currentColor">
-              <path d="M35,80 L25,40 L75,40 L65,80 Z" stroke-width="2" />
-              <line x1="40" y1="40" x2="45" y2="80" stroke-width="1.5" />
-              <line x1="50" y1="40" x2="50" y2="80" stroke-width="1.5" />
-              <line x1="60" y1="40" x2="55" y2="80" stroke-width="1.5" />
-              <circle cx="30" cy="35" r="6" stroke-width="2" />
-              <circle cx="40" cy="30" r="7" stroke-width="2" />
-              <circle cx="50" cy="33" r="6" stroke-width="2" />
-              <circle cx="60" cy="28" r="8" stroke-width="2" />
-              <circle cx="70" cy="36" r="6" stroke-width="2" />
-              <rect x="12" y="10" width="22" height="16" rx="2" stroke-width="2" transform="rotate(-15 20 20)" />
-              <line x1="12" y1="18" x2="34" y2="12" stroke-width="2" transform="rotate(-15 20 20)" />
-            </svg>
-
-            <div class="ticket-title-row">
-              <span class="ticket-admit-badge">ADMIT ONE</span>
-              <h2 id="tMovie" class="ticket-movie-title">Loading…</h2>
-            </div>
-            
-            <div class="ticket-info-grid">
-              <div class="ticket-info-item">
-                <label>Cinema</label>
-                <span id="tCinema">—</span>
-              </div>
-              <div class="ticket-info-item">
-                <label>Hall</label>
-                <span id="tHall">—</span>
-              </div>
-              <div class="ticket-info-item">
-                <label>Date &amp; Time</label>
-                <span id="tDateTime">—</span>
-              </div>
-              <div class="ticket-info-item">
-                <label>Format</label>
-                <span id="tFormat">—</span>
-              </div>
-              <div class="ticket-info-item" style="grid-column: span 2;">
-                <label>Seats</label>
-                <span id="tSeats">—</span>
-              </div>
-            </div>
-            
-            <div class="ticket-snacks-section" id="tfSnacks" style="display: none;">
-              <label>Snacks &amp; Combo</label>
-              <div id="tSnacks" class="ticket-snacks-list"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Perforation Separator -->
-        <div class="ticket-perforation">
-          <div class="perf-circle-top"></div>
-          <div class="perf-line"></div>
-          <div class="perf-circle-bottom"></div>
-        </div>
-
-        <!-- Right Part: Stub -->
-        <div class="ticket-stub">
-          <div class="ticket-stub-header">
-            <span class="stub-title">TICKET STUB</span>
-            <span id="tPrice" class="price">$0.00</span>
-          </div>
-          <div class="ticket-stub-body">
-            <div id="tMovieStub" class="stub-movie-title">Loading…</div>
-            <div class="stub-qr-wrapper">
-              <div id="qrcode"></div>
-            </div>
-            <span class="stub-scan-label">SCAN TO VERIFY</span>
-            <span id="tOrderIdBottom" class="stub-serial">—</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="download-section">
-        <button onclick="downloadTicket()" class="btn-download">&#8595;&nbsp; Download Ticket</button>
+      <div class="download-section" style="margin-top: 24px;">
+        <button onclick="downloadTicket()" class="btn-download" id="downloadBtnText">&#8595;&nbsp; Download Ticket</button>
         <a href="index.html" class="btn-home">Return Home</a>
       </div>
     </div>
@@ -153,6 +65,28 @@
   <div id="processingOverlay" class="processing-overlay">
     <div class="spinner"></div>
     <div class="processing-text">Processing Payment...</div>
+  </div>
+
+  <!-- Download Warning Modal -->
+  <div id="dlWarningModal" class="tkt-warning-modal">
+    <div class="tkt-warning-modal__inner">
+      <div class="warning-icon-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      </div>
+      <h3>Keep Your Pass Confidential</h3>
+      <p>Your QR code and Ticket ID are your <strong>private entrance pass</strong> to the cinema. Do not post screenshots or share your pass publicly.</p>
+      <div class="warning-alert-box">
+        <strong>SECURITY NOTICE:</strong> NokorPass is not responsible for stolen access or unauthorized hall entries resulting from leaked or shared passes.
+      </div>
+      <div class="warning-modal-actions">
+        <button id="confirmDownloadBtn" class="btn-confirm-dl">I Understand, Save Ticket</button>
+        <button id="cancelDownloadBtn" class="btn-cancel-dl">Cancel</button>
+      </div>
+    </div>
   </div>
 
   <!-- Libraries -->
@@ -179,7 +113,15 @@
     const snacksRaw = qparams.get('snacks') || "";
     const snackList = snacksRaw ? snacksRaw.split(',') : [];
 
-    const orderId = "TKT-" + Math.random().toString(36).substr(2, 9).toUpperCase();
+    // Generate one orderId per seat (movies) or per qty (events)
+    const rawQty = parseInt(qparams.get('qty') || '0');
+    const rawSeats = seats.split(',').map(s => s.trim()).filter(Boolean);
+    // If a qty param is set and there's only one seat label, repeat it for each ticket
+    const seatList = (rawQty > 1 && rawSeats.length === 1)
+      ? Array(rawQty).fill(rawSeats[0])
+      : rawSeats;
+    const orderIds = seatList.map(() => "TKT-" + Math.random().toString(36).substr(2, 9).toUpperCase());
+    const orderId = orderIds[0]; // show the first ticket in the UI
 
     const snackNames = {
       'set-a': 'Popcorn Set A', 'set-b': 'Popcorn Set B', 'set-c': 'Popcorn Set C',
@@ -209,37 +151,87 @@
       document.getElementById('paymentSelection').style.display = 'none';
       document.getElementById('successView').style.display = 'block';
       
-      // Populate Ticket UI
-      document.getElementById('tMovie').textContent = movieTitle;
-      document.getElementById('tMovieStub').textContent = movieTitle;
-      document.getElementById('tCinema').textContent = cinema + " (" + loc + ")";
-      document.getElementById('tHall').textContent = hall;
-      document.getElementById('tFormat').textContent = type;
-      document.getElementById('tDateTime').textContent = date + " at " + time;
-      document.getElementById('tSeats').textContent = seats;
-      document.getElementById('tPrice').textContent = "$" + total;
-      document.getElementById('tOrderId').textContent = orderId;
-      document.getElementById('tOrderIdBottom').textContent = orderId;
-      
-      const snackContainer = document.getElementById('tSnacks');
-      const snackBox = document.getElementById('tfSnacks');
-      if (snackList.length > 0) {
-        snackContainer.innerHTML = snackList.map(s => {
-          const [id, qty] = s.split(':');
-          return `<span class="snack-tag">${qty}x ${snackNames[id] || id}</span>`;
-        }).join('');
-        snackBox.style.display = 'block';
-      } else {
-        snackBox.style.display = 'none';
+      const subEl = document.getElementById('ticketCountSub');
+      if (subEl) {
+        subEl.textContent = seatList.length > 1
+          ? seatList.length + " Tickets Issued (" + seatList.join(', ') + ")"
+          : "1 Ticket Issued (" + (seatList[0] || seats) + ")";
       }
 
-      // Generate local QR
-      new QRCode(document.getElementById("qrcode"), {
-        text: orderId, width: 140, height: 140,
-        colorDark: "#000000", colorLight: "#ffffff", correctLevel: QRCode.CorrectLevel.H
-      });
+      const dlBtnText = document.getElementById('downloadBtnText');
+      if (dlBtnText) {
+        dlBtnText.innerHTML = seatList.length > 1
+          ? "&#8595;&nbsp; Download All Tickets (" + seatList.length + ")"
+          : "&#8595;&nbsp; Download Ticket";
+      }
+
+      // Per-ticket price calculation
+      const perTicketPriceNum = seatList.length > 0 ? (parseFloat(total) / seatList.length) : parseFloat(total);
+      const perTicketPriceStr = (perTicketPriceNum % 1 === 0 ? parseInt(perTicketPriceNum) : perTicketPriceNum.toFixed(2));
+
+      // Build individual ticket cards stacked vertically
+      const stack = document.getElementById('ticketsStack');
+      if (stack) {
+        stack.innerHTML = '';
+        seatList.forEach((seatItem, idx) => {
+          const tId = orderIds[idx];
+          const ticketCard = document.createElement('div');
+          ticketCard.className = 'ticket-outer-framed';
+          ticketCard.id = 'ticketExport_' + idx;
+          ticketCard.innerHTML =
+            '<img class="ticket-frame-img" src="assets/Ticket-Nokorpass.png" alt="" crossorigin="anonymous">' +
+            '<div class="ticket-overlay">' +
+              '<div class="tkt-field-header-id secret-field is-hidden">' + tId + '</div>' +
+              '<div class="tkt-field-header-price">$' + perTicketPriceStr + '</div>' +
+              '<div class="tkt-field-title t-movie-field">' + movieTitle + '</div>' +
+              '<div class="tkt-field-cinema t-cinema-field">' + cinema + ' (' + loc + ')</div>' +
+              '<div class="tkt-field-hall">' + hall + '</div>' +
+              '<div class="tkt-field-seats">' + seatItem + '</div>' +
+              '<div class="tkt-field-datetime">' + date + ' at ' + time + '</div>' +
+              '<div class="tkt-field-format">' + type + '</div>' +
+              '<div class="tkt-field-qrcode secret-field is-hidden">' +
+                '<div id="qrcode_' + idx + '"></div>' +
+                '<div class="qr-reveal-icon">' +
+                  '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));">' +
+                    '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>' +
+                    '<line x1="1" y1="1" x2="23" y2="23"></line>' +
+                  '</svg>' +
+                '</div>' +
+              '</div>' +
+              '<div class="tkt-field-stub-title t-stub-title-field">' + movieTitle + '</div>' +
+              '<div class="tkt-field-stub-id secret-field is-hidden">' + tId + '</div>' +
+            '</div>';
+          stack.appendChild(ticketCard);
+
+          // Generate local QR code for each specific ticket
+          new QRCode(document.getElementById("qrcode_" + idx), {
+            text: tId, width: 140, height: 140,
+            colorDark: "#000000", colorLight: "rgba(0,0,0,0)", correctLevel: QRCode.CorrectLevel.H
+          });
+        });
+      }
 
       window.currentOrderId = orderId;
+
+      // Auto-shrink title font if it overflows its container across all rendered cards
+      requestAnimationFrame(() => {
+        document.querySelectorAll('.ticket-outer-framed').forEach(ticketCard => {
+          const fields = [
+            { el: ticketCard.querySelector('.t-movie-field'),      max: 2.0 },
+            { el: ticketCard.querySelector('.t-cinema-field'),     max: 1.5 },
+            { el: ticketCard.querySelector('.t-stub-title-field'), max: 1.4 }
+          ];
+          fields.forEach(({ el, max }) => {
+            if (!el) return;
+            let size = max;
+            el.style.fontSize = size + 'cqw';
+            while (el.scrollHeight > el.offsetHeight && size > 0.5) {
+              size = Math.round((size - 0.1) * 10) / 10;
+              el.style.fontSize = size + 'cqw';
+            }
+          });
+        });
+      });
 
       const qDate = qparams.get('date') || "";
       let numericDate = qDate;
@@ -248,35 +240,44 @@
         numericDate = new Date().toISOString().split('T')[0];
       }
 
-      // 🔥 SAVE TO FIRESTORE 🔥
+      // 🔥 SAVE TO FIRESTORE — one doc per seat 🔥
       try {
         const user = auth.currentUser;
         if (user) {
-          await addDoc(collection(db, "tickets"), {
-            uid: user.uid,
-            orderId, movieTitle, cinema, loc, hall, type, time, date, numericDate, seats, total, snackList,
-            createdAt: serverTimestamp()
-          });
-          console.log("Ticket saved to Firestore!");
+          // Each seat gets its own ticket document and unique orderId
+          const ticketPrice = seatList.length > 0
+            ? (parseFloat(total) / seatList.length).toFixed(2)
+            : total;
+          await Promise.all(seatList.map((seat, i) =>
+            addDoc(collection(db, "tickets"), {
+              uid: user.uid,
+              orderId: orderIds[i],
+              movieTitle, cinema, loc, hall, type, time, date, numericDate,
+              seats: seat,
+              total: ticketPrice,
+              snackList: i === 0 ? snackList : [], // snacks assigned to first ticket only
+              createdAt: serverTimestamp()
+            })
+          ));
+          console.log(seatList.length + " ticket(s) saved to Firestore!");
 
           // Send confirmation email via EmailJS
           try {
             if (window.emailjs) {
-              const ticketQtyVal = seats.split(',').length;
+              const ticketQtyVal = seatList.length;
               const formattedSnacks = snackList.map(s => {
                 const [id, qty] = s.split(':');
-                return `${qty}x ${snackNames[id] || id}`;
+                return qty + "x " + (snackNames[id] || id);
               }).join(', ');
 
               const emailParams = {
                 to_email: user.email,
                 to_name: user.displayName || user.email.split('@')[0],
-                item_title: movieTitle + (formattedSnacks ? ` + Snacks (${formattedSnacks})` : ''),
-                showtime: `${date} at ${time}`,
+                item_title: movieTitle + (formattedSnacks ? (" + Snacks (" + formattedSnacks + ")") : ''),
+                showtime: date + " at " + time,
                 seats: seats,
                 ticket_qty: ticketQtyVal,
-                total_price: `$${parseFloat(total).toFixed(2)}`,
-                booking_id: orderId
+                total_price: "$" + parseFloat(total).toFixed(2)
               };
 
               // Note: Replace "YOUR_EMAILJS_PUBLIC_KEY" with your actual EmailJS Public Key from Account Settings
@@ -297,23 +298,109 @@
     }
 
     // Header total injection logic for module
-    const headerTotal = new URLSearchParams(window.location.search).get('final_total') || '0.00';
+    const headerTotal = new URLSearchParams(window.location.search).get('final_total')
+      || new URLSearchParams(window.location.search).get('ticket_total') || '0.00';
+    const bookingType = new URLSearchParams(window.location.search).get('booking_type') || 'Movie';
     if(document.getElementById('headerTotal')) document.getElementById('headerTotal').textContent = headerTotal;
+    if(document.getElementById('checkoutTypeLabel')) document.getElementById('checkoutTypeLabel').textContent = bookingType;
 
     // Attach listeners
     document.querySelectorAll('.method-card').forEach(card => {
       card.addEventListener('click', () => startPayment(card.getAttribute('data-name')));
     });
 
-    window.downloadTicket = () => {
-      const ticket = document.getElementById('ticketExport');
-      html2canvas(ticket, { backgroundColor: null, scale: 3, useCORS: true }).then(canvas => {
-        const link = document.createElement('a');
-        link.download = 'NokorPass-Ticket-' + (window.currentOrderId || 'ticket') + '.png';
-        link.href = canvas.toDataURL('image/png');
-        link.click();
+    // Toggle secrets per ticket when clicking its QR box
+    const stackEl = document.getElementById('ticketsStack');
+    if (stackEl) {
+      stackEl.addEventListener('click', (e) => {
+        const qrBox = e.target.closest('.tkt-field-qrcode');
+        if (qrBox) {
+          const ticketCard = qrBox.closest('.ticket-outer-framed');
+          if (ticketCard) {
+            const secretFields = ticketCard.querySelectorAll('.secret-field');
+            const isCurrentlyHidden = qrBox.classList.contains('is-hidden');
+            secretFields.forEach(f => {
+              f.classList.toggle('is-hidden', !isCurrentlyHidden);
+            });
+          }
+        }
       });
+    }
+
+    // Download Warning Modal Flow
+    const warningModal = document.getElementById('dlWarningModal');
+    const confirmDlBtn = document.getElementById('confirmDownloadBtn');
+    const cancelDlBtn = document.getElementById('cancelDownloadBtn');
+
+    window.downloadTicket = () => {
+      if (warningModal) warningModal.classList.add('open');
     };
+
+    if (cancelDlBtn) {
+      cancelDlBtn.addEventListener('click', () => {
+        if (warningModal) warningModal.classList.remove('open');
+      });
+    }
+
+    if (confirmDlBtn) {
+      confirmDlBtn.addEventListener('click', () => {
+        if (warningModal) warningModal.classList.remove('open');
+        const tickets = document.querySelectorAll('.ticket-outer-framed');
+        if (!tickets || tickets.length === 0) return;
+
+        document.fonts.ready.then(async () => {
+          for (let i = 0; i < tickets.length; i++) {
+            const t = tickets[i];
+            const secretFields = t.querySelectorAll('.secret-field');
+            const hiddenStates = [];
+
+            secretFields.forEach((f, idx) => {
+              hiddenStates[idx] = f.classList.contains('is-hidden');
+              f.classList.remove('is-hidden');
+            });
+
+            try {
+              const canvas = await html2canvas(t, { backgroundColor: null, scale: 3, useCORS: true, allowTaint: true });
+              secretFields.forEach((f, idx) => {
+                if (hiddenStates[idx]) f.classList.add('is-hidden');
+              });
+
+              const link = document.createElement('a');
+              link.download = tickets.length > 1 ? ("NokorPass-Ticket-" + (i + 1) + ".png") : "NokorPass-Ticket.png";
+              link.href = canvas.toDataURL('image/png');
+              link.click();
+              // Small delay between downloads if multiple
+              if (tickets.length > 1) {
+                await new Promise(res => setTimeout(res, 400));
+              }
+            } catch (err) {
+              console.error("Canvas export error:", err);
+              secretFields.forEach((f, idx) => {
+                if (hiddenStates[idx]) f.classList.add('is-hidden');
+              });
+            }
+          }
+        });
+      });
+    }
+
+    // Anti-screenshot & Anti-print protections
+    const ticketExportEl = document.getElementById('ticketExport');
+    if (ticketExportEl) {
+      ticketExportEl.addEventListener('contextmenu', e => e.preventDefault());
+    }
+
+    window.addEventListener('keydown', e => {
+      if (e.key === 'PrintScreen' || ((e.ctrlKey || e.metaKey) && (e.key === 'p' || e.key === 'P' || e.key === 's' || e.key === 'S'))) {
+        e.preventDefault();
+        document.querySelectorAll('.secret-field').forEach(f => f.classList.add('is-hidden'));
+        alert("Security Alert: Ticket secrets are blurred for privacy. Use the 'Download Ticket' button to securely save your pass.");
+      }
+    });
+
+    window.addEventListener('blur', () => {
+      document.querySelectorAll('.secret-field').forEach(f => f.classList.add('is-hidden'));
+    });
 </script>
 </body>
 </html>

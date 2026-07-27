@@ -474,6 +474,329 @@ const css = `
       gap: 16px;
     }
   }
+
+  /* ── FRAMED TICKET DESIGN USING Ticket-Nokorpass.png ── */
+  .ticket-outer-framed {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    aspect-ratio: 2 / 1;
+    margin: 0 auto 24px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75);
+    border-radius: 20px;
+    overflow: hidden;
+    user-select: none;
+    font-family: 'DM Sans', sans-serif;
+    text-align: left;
+    container-type: inline-size;
+  }
+
+  .ticket-frame-img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .ticket-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .tkt-field-header-id {
+    position: absolute;
+    top: 10.5%; left: 49.1%;
+    width: 13.5%; height: 6%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: monospace;
+    font-size: 1.35cqw;
+    font-weight: 800;
+    color: rgba(255,255,255,0.95);
+    letter-spacing: 0.05em;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .tkt-field-header-price {
+    position: absolute;
+    top: 6.8%; left: 83.5%;
+    width: 13.0%; height: 10.2%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 2.6cqw;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .tkt-field-title {
+    position: absolute;
+    top: 35%; left: 5.0%;
+    width: 58%; height: 18%;
+    display: flex; align-items: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5cqw;
+    font-weight: 900;
+    line-height: 1.15;
+    text-transform: uppercase;
+    color: #0d0d0d;
+    letter-spacing: -0.02em;
+    white-space: normal;
+    word-break: break-word;
+    overflow: hidden;
+  }
+
+  .tkt-field-cinema {
+    position: absolute;
+    top: 57.5%; left: 5.0%;
+    width: 28%; height: 10%;
+    display: flex; align-items: center;
+    font-size: 1.5cqw;
+    font-weight: 800; color: #1a1a1a;
+    white-space: normal; word-break: break-word; overflow: hidden;
+    line-height: 1.1;
+  }
+
+  .tkt-field-hall {
+    position: absolute;
+    top: 57.5%; left: 34.7%;
+    width: 18%; height: 10%;
+    display: flex; align-items: center;
+    font-size: 1.5cqw;
+    font-weight: 800; color: #1a1a1a;
+    white-space: normal; word-break: break-word; overflow: hidden;
+    line-height: 1.1;
+  }
+
+  .tkt-field-seats {
+    position: absolute;
+    top: 57.5%; left: 54.8%;
+    width: 12%; height: 10%;
+    display: flex; align-items: center;
+    font-size: 1.5cqw;
+    font-weight: 800; color: #1a1a1a;
+    white-space: normal; word-break: break-word; overflow: hidden;
+    line-height: 1.1;
+  }
+
+  .tkt-field-datetime {
+    position: absolute;
+    top: 77.5%; left: 5.0%;
+    width: 28%; height: 10%;
+    display: flex; align-items: center;
+    font-size: 1.45cqw;
+    font-weight: 800; color: #1a1a1a;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    line-height: 1;
+  }
+
+  .tkt-field-format {
+    position: absolute;
+    top: 77.5%; left: 34.7%;
+    width: 18%; height: 10%;
+    display: flex; align-items: center;
+    font-size: 1.65cqw;
+    font-weight: 800; color: #1a1a1a;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    line-height: 1;
+  }
+
+  .tkt-field-qrcode {
+    position: absolute;
+    top: 41.0%; left: 72.8%;
+    width: 20.1%; height: 38.0%;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1%;
+    box-sizing: border-box;
+  }
+
+  .tkt-field-qrcode [id^="qrcode"],
+  .tkt-field-qrcode img,
+  .tkt-field-qrcode canvas {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  .tkt-field-stub-id {
+    position: absolute;
+    top: 86.5%; left: 75.7%;
+    width: 14.3%; height: 6.0%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: monospace;
+    font-size: 1.35cqw;
+    font-weight: 800;
+    color: #8c857b;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  /* Stub Movie Title (above QR code) */
+  .tkt-field-stub-title {
+    position: absolute;
+    top: 27%;
+    left: 70.5%;
+    width: 26%;
+    height: 12%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4cqw;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: normal;
+    word-break: break-word;
+    overflow: hidden;
+    line-height: 1.2;
+  }
+
+  /* ── SECRETS BLUR & EYE TOGGLE ── */
+  .tkt-field-header-id.is-hidden,
+  .tkt-field-stub-id.is-hidden,
+  .tkt-field-qrcode.is-hidden [id^="qrcode"] {
+    filter: blur(7px) brightness(0.95);
+    user-select: none;
+  }
+
+  .tkt-field-qrcode {
+    pointer-events: auto !important;
+    cursor: pointer;
+  }
+  .qr-reveal-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  .tkt-field-qrcode.is-hidden .qr-reveal-icon {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* ── DOWNLOAD WARNING MODAL STYLES ── */
+  .tkt-warning-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 4000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .tkt-warning-modal.open {
+    display: flex;
+    animation: modalFadeIn 0.3s ease;
+  }
+
+  .tkt-warning-modal__inner {
+    background: #141416;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    max-width: 440px;
+    width: 100%;
+    padding: 32px 28px;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .warning-icon-badge {
+    width: 60px;
+    height: 60px;
+    background: rgba(229, 9, 20, 0.15);
+    border: 2px solid rgba(229, 9, 20, 0.4);
+    color: #e50914;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin: 0 auto 16px;
+  }
+
+  .tkt-warning-modal__inner h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+
+  .tkt-warning-modal__inner p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  .warning-alert-box {
+    background: rgba(234, 179, 8, 0.1);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 0.8rem;
+    color: #fef08a;
+    line-height: 1.45;
+    text-align: left;
+    margin-bottom: 22px;
+  }
+
+  .warning-modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-confirm-dl {
+    background: linear-gradient(135deg, #e50914, #b20710);
+    color: #fff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-confirm-dl:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  .btn-cancel-dl {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-cancel-dl:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+
+  /* ── ANTI-PRINT CSS ── */
+  @media print {
+    body { display: none !important; }
+  }
 `;
 
 /* ─────────────────────────────────────────────
@@ -524,7 +847,6 @@ const js = `
           <div class="tkt-card__notch-r"></div>
           <div class="tkt-card__top">
             <span class="tkt-card__top-brand">NOKORPASS TICKET</span>
-            <span class="tkt-card__top-id">\${t.orderId}</span>
           </div>
           <div class="tkt-card__body">
             <p class="tkt-card__movie">\${t.movieTitle}</p>
@@ -567,31 +889,39 @@ const js = `
     document.getElementById('tFormat').textContent    = t.type || '2D';
     document.getElementById('tDateTime').textContent  = t.date + ' at ' + t.time;
     document.getElementById('tSeats').textContent     = t.seats;
-    document.getElementById('tPrice').textContent     = '$' + t.total;
+    document.getElementById('tPrice').textContent     = '$' + (parseFloat(t.total) % 1 === 0 ? parseInt(t.total) : parseFloat(t.total));
     document.getElementById('tOrderId').textContent   = t.orderId;
     document.getElementById('tOrderIdBottom').textContent = t.orderId;
-
-    const snackBox = document.getElementById('tfSnacks');
-    if (t.snackList && t.snackList.length > 0) {
-      document.getElementById('tfSnackItems').innerHTML = t.snackList.map(s => {
-        const [id, qty] = s.split(':');
-        return \`<span class="snack-tag">\${qty}x \${snackNames[id] || id}</span>\`;
-      }).join('');
-      snackBox.style.display = 'block';
-    } else {
-      snackBox.style.display = 'none';
-    }
 
     document.getElementById('qrcode').innerHTML = '';
     new QRCode(document.getElementById('qrcode'), {
       text: t.orderId, width: 140, height: 140,
-      colorDark: '#000000', colorLight: '#ffffff',
+      colorDark: '#000000', colorLight: 'rgba(0,0,0,0)',
       correctLevel: QRCode.CorrectLevel.H
     });
 
     tktModal.classList.add('open');
     document.body.style.overflow = 'hidden';
     window.__currentTicketId = t.orderId;
+
+    // Auto-shrink title font if it overflows its container
+    requestAnimationFrame(() => {
+      const fields = [
+        { id: 'tMovie',     max: 2.0 },
+        { id: 'tCinema',    max: 1.5 },
+        { id: 'tMovieStub', max: 1.4 }
+      ];
+      fields.forEach(({ id, max }) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        let size = max;
+        el.style.fontSize = size + 'cqw';
+        while (el.scrollHeight > el.offsetHeight && size > 0.5) {
+          size = Math.round((size - 0.1) * 10) / 10;
+          el.style.fontSize = size + 'cqw';
+        }
+      });
+    });
   }
 
   /* ── CLOSE ── */
@@ -603,16 +933,82 @@ const js = `
     document.body.style.overflow = '';
   }
 
-  /* ── DOWNLOAD ── */
-  document.getElementById('tktDownloadBtn').addEventListener('click', () => {
-    const ticket = document.getElementById('ticketExport');
-    // Set scale to 3 for crisp exporting
-    html2canvas(ticket, { backgroundColor: null, scale: 3, useCORS: true }).then(canvas => {
-      const a = document.createElement('a');
-      a.download = 'NokorPass-Ticket-' + (window.__currentTicketId || 'ticket') + '.png';
-      a.href = canvas.toDataURL('image/png');
-      a.click();
+  /* ── TOGGLE ALL PASS SECRETS VIA QR BOX ── */
+  const qrBox = document.getElementById('tQrCodeBox');
+  if (qrBox) {
+    qrBox.addEventListener('click', () => {
+      const secretFields = document.querySelectorAll('.secret-field');
+      const isCurrentlyHidden = qrBox.classList.contains('is-hidden');
+      
+      secretFields.forEach(f => {
+        f.classList.toggle('is-hidden', !isCurrentlyHidden);
+      });
     });
+  }
+
+  /* ── DOWNLOAD WITH WARNING MODAL ── */
+  const warningModal = document.getElementById('dlWarningModal');
+  const confirmDlBtn = document.getElementById('confirmDownloadBtn');
+  const cancelDlBtn  = document.getElementById('cancelDownloadBtn');
+
+  document.getElementById('tktDownloadBtn').addEventListener('click', () => {
+    if (warningModal) warningModal.classList.add('open');
+  });
+
+  if (cancelDlBtn) {
+    cancelDlBtn.addEventListener('click', () => {
+      if (warningModal) warningModal.classList.remove('open');
+    });
+  }
+
+  if (confirmDlBtn) {
+    confirmDlBtn.addEventListener('click', () => {
+      if (warningModal) warningModal.classList.remove('open');
+      const ticket = document.getElementById('ticketExport');
+      const secretFields = document.querySelectorAll('.secret-field');
+      const hiddenStates = [];
+
+      secretFields.forEach((f, i) => {
+        hiddenStates[i] = f.classList.contains('is-hidden');
+        f.classList.remove('is-hidden');
+      });
+
+      document.fonts.ready.then(() => {
+        html2canvas(ticket, { backgroundColor: null, scale: 3, useCORS: true, allowTaint: true }).then(canvas => {
+          secretFields.forEach((f, i) => {
+            if (hiddenStates[i]) f.classList.add('is-hidden');
+          });
+
+          const a = document.createElement('a');
+          a.download = 'NokorPass-Ticket.png';
+          a.href = canvas.toDataURL('image/png');
+          a.click();
+        }).catch(err => {
+          console.error("Canvas export error:", err);
+          secretFields.forEach((f, i) => {
+            if (hiddenStates[i]) f.classList.add('is-hidden');
+          });
+        });
+      });
+    });
+  }
+
+  /* ── ANTI-SCREENSHOT & ANTI-PRINT ── */
+  const ticketExportEl = document.getElementById('ticketExport');
+  if (ticketExportEl) {
+    ticketExportEl.addEventListener('contextmenu', e => e.preventDefault());
+  }
+
+  window.addEventListener('keydown', e => {
+    if (e.key === 'PrintScreen' || ((e.ctrlKey || e.metaKey) && (e.key === 'p' || e.key === 'P' || e.key === 's' || e.key === 'S'))) {
+      e.preventDefault();
+      document.querySelectorAll('.secret-field').forEach(f => f.classList.add('is-hidden'));
+      alert("Security Alert: Ticket secrets are blurred for privacy. Use the 'Download Ticket' button to securely save your pass.");
+    }
+  });
+
+  window.addEventListener('blur', () => {
+    document.querySelectorAll('.secret-field').forEach(f => f.classList.add('is-hidden'));
   });
 `;
 
@@ -635,98 +1031,80 @@ const body = `
     <div class="tkt-modal__inner">
       <button id="tktCloseBtn" class="tkt-modal__close" aria-label="Close">&#x2715;</button>
 
-      <div id="ticketExport" class="ticket-outer">
-        <!-- Circular corner notches -->
-        <div class="notch notch-tl"></div>
-        <div class="notch notch-tr"></div>
-        <div class="notch notch-bl"></div>
-        <div class="notch notch-br"></div>
+      <div id="ticketExport" class="ticket-outer-framed">
+        <!-- Background frame image -->
+        <img class="ticket-frame-img" src="assets/Ticket-Nokorpass.png" alt="" crossorigin="anonymous">
 
-        <!-- Left Part: Main Ticket -->
-        <div class="ticket-main">
-          <div class="ticket-main-header">
-            <span class="brand">
-              <svg class="brand-icon-svg" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2.18"></rect><line x1="7" y1="2" x2="7" y2="22"></line><line x1="17" y1="2" x2="17" y2="22"></line><line x1="2" y1="12" x2="22" y2="12"></line><line x1="2" y1="7" x2="7" y2="7"></line><line x1="2" y1="17" x2="7" y2="17"></line><line x1="17" y1="17" x2="22" y2="17"></line><line x1="17" y1="7" x2="22" y2="7"></line></svg>
-              NOKORPASS
-            </span>
-            <span class="serial" id="tOrderId">—</span>
-          </div>
-          <div class="ticket-main-body">
-            <!-- Background watermark line art SVG -->
-            <svg class="ticket-watermark" viewBox="0 0 100 100" fill="none" stroke="currentColor">
-              <path d="M35,80 L25,40 L75,40 L65,80 Z" stroke-width="2" />
-              <line x1="40" y1="40" x2="45" y2="80" stroke-width="1.5" />
-              <line x1="50" y1="40" x2="50" y2="80" stroke-width="1.5" />
-              <line x1="60" y1="40" x2="55" y2="80" stroke-width="1.5" />
-              <circle cx="30" cy="35" r="6" stroke-width="2" />
-              <circle cx="40" cy="30" r="7" stroke-width="2" />
-              <circle cx="50" cy="33" r="6" stroke-width="2" />
-              <circle cx="60" cy="28" r="8" stroke-width="2" />
-              <circle cx="70" cy="36" r="6" stroke-width="2" />
-              <rect x="12" y="10" width="22" height="16" rx="2" stroke-width="2" transform="rotate(-15 20 20)" />
-              <line x1="12" y1="18" x2="34" y2="12" stroke-width="2" transform="rotate(-15 20 20)" />
-            </svg>
+        <!-- Overlay fields positioned over the frame -->
+        <div class="ticket-overlay">
 
-            <div class="ticket-title-row">
-              <span class="ticket-admit-badge">ADMIT ONE</span>
-              <h2 id="tMovie" class="ticket-movie-title">Loading…</h2>
-            </div>
-            
-            <div class="ticket-info-grid">
-              <div class="ticket-info-item">
-                <label>Cinema</label>
-                <span id="tCinema">—</span>
-              </div>
-              <div class="ticket-info-item">
-                <label>Hall</label>
-                <span id="tHall">—</span>
-              </div>
-              <div class="ticket-info-item">
-                <label>Date &amp; Time</label>
-                <span id="tDateTime">—</span>
-              </div>
-              <div class="ticket-info-item">
-                <label>Format</label>
-                <span id="tFormat">—</span>
-              </div>
-              <div class="ticket-info-item" style="grid-column: span 2;">
-                <label>Seats</label>
-                <span id="tSeats">—</span>
-              </div>
-            </div>
-            
-            <div class="ticket-snacks-section" id="tfSnacks" style="display: none;">
-              <label>Snacks &amp; Combo</label>
-              <div id="tfSnackItems" class="ticket-snacks-list"></div>
+          <!-- Ticket ID in header bar (dark red box) -->
+          <div class="tkt-field-header-id secret-field is-hidden" id="tOrderId"></div>
+
+          <!-- Price in stub header -->
+          <div class="tkt-field-header-price" id="tPrice"></div>
+
+          <!-- Movie Title -->
+          <div class="tkt-field-title" id="tMovie"></div>
+
+          <!-- Cinema / Venue -->
+          <div class="tkt-field-cinema" id="tCinema"></div>
+
+          <!-- Hall -->
+          <div class="tkt-field-hall" id="tHall"></div>
+
+          <!-- Seats -->
+          <div class="tkt-field-seats" id="tSeats"></div>
+
+          <!-- Date and Time -->
+          <div class="tkt-field-datetime" id="tDateTime"></div>
+
+          <!-- Format -->
+          <div class="tkt-field-format" id="tFormat"></div>
+
+          <!-- QR Code (over the pink placeholder square) -->
+          <div class="tkt-field-qrcode secret-field is-hidden" id="tQrCodeBox">
+            <div id="qrcode"></div>
+            <div class="qr-reveal-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));">
+                <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"></path>
+                <line x1="1" y1="1" x2="23" y2="23"></line>
+              </svg>
             </div>
           </div>
-        </div>
 
-        <!-- Perforation Separator -->
-        <div class="ticket-perforation">
-          <div class="perf-circle-top"></div>
-          <div class="perf-line"></div>
-          <div class="perf-circle-bottom"></div>
-        </div>
+          <!-- Stub movie title above QR -->
+          <div class="tkt-field-stub-title" id="tMovieStub"></div>
 
-        <!-- Right Part: Stub -->
-        <div class="ticket-stub">
-          <div class="ticket-stub-header">
-            <span class="stub-title">TICKET STUB</span>
-            <span id="tPrice" class="price">$0.00</span>
-          </div>
-          <div class="ticket-stub-body">
-            <div id="tMovieStub" class="stub-movie-title">Loading…</div>
-            <div class="stub-qr-wrapper">
-              <div id="qrcode"></div>
-            </div>
-            <span class="stub-scan-label">SCAN TO VERIFY</span>
-            <span id="tOrderIdBottom" class="stub-serial">—</span>
-          </div>
+          <!-- Stub bottom ticket ID -->
+          <div class="tkt-field-stub-id secret-field is-hidden" id="tOrderIdBottom"></div>
+
         </div>
       </div>
 
-      <button id="tktDownloadBtn" class="btn-dl">&#8595;&ensp;Download Ticket</button>
+      <button id="tktDownloadBtn" class="btn-dl" style="margin-top: 16px;">&#8595;&ensp;Download Ticket</button>
+    </div>
+  </div>
+
+  <!-- Download Warning Modal -->
+  <div id="dlWarningModal" class="tkt-warning-modal">
+    <div class="tkt-warning-modal__inner">
+      <div class="warning-icon-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+      </div>
+      <h3>Keep Your Pass Confidential</h3>
+      <p>Your QR code and Ticket ID are your <strong>private entrance pass</strong> to the cinema. Do not post screenshots or share your pass publicly.</p>
+      <div class="warning-alert-box">
+        <strong>SECURITY NOTICE:</strong> NokorPass is not responsible for stolen access or unauthorized hall entries resulting from leaked or shared passes.
+      </div>
+      <div class="warning-modal-actions">
+        <button id="confirmDownloadBtn" class="btn-confirm-dl">I Understand, Save Ticket</button>
+        <button id="cancelDownloadBtn" class="btn-cancel-dl">Cancel</button>
+      </div>
     </div>
   </div>
 

@@ -664,8 +664,10 @@
         params.set('type', tierName + ' Class');
         params.set('time', e.time || '');
         params.set('date', e.displayDate || e.date || '');
-        params.set('seats', tierName + ' Zone (' + qty + ' Ticket' + (qty > 1 ? 's' : '') + ')');
+        params.set('seats', tierName + ' Zone');
+        params.set('qty', qty);
         params.set('ticket_total', total);
+        params.set('booking_type', 'Event');
 
         window.location.href = 'payment.html?' + params.toString();
       });

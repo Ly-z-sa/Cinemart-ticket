@@ -467,3 +467,326 @@
       gap: 16px;
     }
   }
+
+  /* ── FRAMED TICKET DESIGN USING Ticket-Nokorpass.png ── */
+  .ticket-outer-framed {
+    position: relative;
+    width: 100%;
+    max-width: 760px;
+    aspect-ratio: 2 / 1;
+    margin: 0 auto 24px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75);
+    border-radius: 20px;
+    overflow: hidden;
+    user-select: none;
+    font-family: 'DM Sans', sans-serif;
+    text-align: left;
+    container-type: inline-size;
+  }
+
+  .ticket-frame-img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .ticket-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  .tkt-field-header-id {
+    position: absolute;
+    top: 10.5%; left: 49.1%;
+    width: 13.5%; height: 6%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: monospace;
+    font-size: 1.35cqw;
+    font-weight: 800;
+    color: rgba(255,255,255,0.95);
+    letter-spacing: 0.05em;
+    text-align: center;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .tkt-field-header-price {
+    position: absolute;
+    top: 6.8%; left: 83.5%;
+    width: 13.0%; height: 10.2%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 2.6cqw;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  .tkt-field-title {
+    position: absolute;
+    top: 35%; left: 5.0%;
+    width: 58%; height: 18%;
+    display: flex; align-items: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 2.5cqw;
+    font-weight: 900;
+    line-height: 1.15;
+    text-transform: uppercase;
+    color: #0d0d0d;
+    letter-spacing: -0.02em;
+    white-space: normal;
+    word-break: break-word;
+    overflow: hidden;
+  }
+
+  .tkt-field-cinema {
+    position: absolute;
+    top: 57.5%; left: 5.0%;
+    width: 28%; height: 10%;
+    display: flex; align-items: center;
+    font-size: 1.5cqw;
+    font-weight: 800; color: #1a1a1a;
+    white-space: normal; word-break: break-word; overflow: hidden;
+    line-height: 1.1;
+  }
+
+  .tkt-field-hall {
+    position: absolute;
+    top: 57.5%; left: 34.7%;
+    width: 18%; height: 10%;
+    display: flex; align-items: center;
+    font-size: 1.5cqw;
+    font-weight: 800; color: #1a1a1a;
+    white-space: normal; word-break: break-word; overflow: hidden;
+    line-height: 1.1;
+  }
+
+  .tkt-field-seats {
+    position: absolute;
+    top: 57.5%; left: 54.8%;
+    width: 12%; height: 10%;
+    display: flex; align-items: center;
+    font-size: 1.5cqw;
+    font-weight: 800; color: #1a1a1a;
+    white-space: normal; word-break: break-word; overflow: hidden;
+    line-height: 1.1;
+  }
+
+  .tkt-field-datetime {
+    position: absolute;
+    top: 77.5%; left: 5.0%;
+    width: 28%; height: 10%;
+    display: flex; align-items: center;
+    font-size: 1.45cqw;
+    font-weight: 800; color: #1a1a1a;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    line-height: 1;
+  }
+
+  .tkt-field-format {
+    position: absolute;
+    top: 77.5%; left: 34.7%;
+    width: 18%; height: 10%;
+    display: flex; align-items: center;
+    font-size: 1.65cqw;
+    font-weight: 800; color: #1a1a1a;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    line-height: 1;
+  }
+
+  .tkt-field-qrcode {
+    position: absolute;
+    top: 41.0%; left: 72.8%;
+    width: 20.1%; height: 38.0%;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1%;
+    box-sizing: border-box;
+  }
+
+  .tkt-field-qrcode [id^="qrcode"],
+  .tkt-field-qrcode img,
+  .tkt-field-qrcode canvas {
+    width: 100% !important;
+    height: 100% !important;
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
+  }
+
+  .tkt-field-stub-id {
+    position: absolute;
+    top: 86.5%; left: 75.7%;
+    width: 14.3%; height: 6.0%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: monospace;
+    font-size: 1.35cqw;
+    font-weight: 800;
+    color: #8c857b;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    line-height: 1;
+  }
+
+  /* Stub Movie Title (above QR code) */
+  .tkt-field-stub-title {
+    position: absolute;
+    top: 27%;
+    left: 70.5%;
+    width: 26%;
+    height: 12%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-size: 1.4cqw;
+    font-weight: 800;
+    color: #1a1a1a;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: normal;
+    word-break: break-word;
+    overflow: hidden;
+    line-height: 1.2;
+  }
+
+  /* ── SECRETS BLUR & EYE TOGGLE ── */
+  .tkt-field-header-id.is-hidden,
+  .tkt-field-stub-id.is-hidden,
+  .tkt-field-qrcode.is-hidden [id^="qrcode"] {
+    filter: blur(7px) brightness(0.95);
+    user-select: none;
+  }
+
+  .tkt-field-qrcode {
+    pointer-events: auto !important;
+    cursor: pointer;
+  }
+  .qr-reveal-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  .tkt-field-qrcode.is-hidden .qr-reveal-icon {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  /* ── DOWNLOAD WARNING MODAL STYLES ── */
+  .tkt-warning-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 4000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+  .tkt-warning-modal.open {
+    display: flex;
+    animation: modalFadeIn 0.3s ease;
+  }
+
+  .tkt-warning-modal__inner {
+    background: #141416;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 20px;
+    max-width: 440px;
+    width: 100%;
+    padding: 32px 28px;
+    text-align: center;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9);
+    font-family: 'DM Sans', sans-serif;
+  }
+
+  .warning-icon-badge {
+    width: 60px;
+    height: 60px;
+    background: rgba(229, 9, 20, 0.15);
+    border: 2px solid rgba(229, 9, 20, 0.4);
+    color: #e50914;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    margin: 0 auto 16px;
+  }
+
+  .tkt-warning-modal__inner h3 {
+    font-family: 'Syne', sans-serif;
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 10px;
+  }
+
+  .tkt-warning-modal__inner p {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  .warning-alert-box {
+    background: rgba(234, 179, 8, 0.1);
+    border: 1px solid rgba(234, 179, 8, 0.3);
+    border-radius: 12px;
+    padding: 12px 14px;
+    font-size: 0.8rem;
+    color: #fef08a;
+    line-height: 1.45;
+    text-align: left;
+    margin-bottom: 22px;
+  }
+
+  .warning-modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-confirm-dl {
+    background: linear-gradient(135deg, #e50914, #b20710);
+    color: #fff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 12px;
+    font-family: 'Syne', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-confirm-dl:hover { opacity: 0.9; transform: translateY(-1px); }
+
+  .btn-cancel-dl {
+    background: transparent;
+    color: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 12px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-cancel-dl:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+
+  /* ── ANTI-PRINT CSS ── */
+  @media print {
+    body { display: none !important; }
+  }
